@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1D Quiz Challenge - Test Your Knowledge!</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&family=Fredoka+One:wght@400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">← Back to Scrapbook</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#quiz" class="active">Quiz</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="quiz-section">
+        <div class="container">
+            <div class="scrapbook-page quiz-page">
+                <h1 class="quiz-title">1D Quiz Challenge ★</h1>
+                <p class="quiz-subtitle">Test your One Direction knowledge!</p>
+                
+                <div class="wip-notice">
+                    <div class="handwritten" style="color: var(--ink-red); font-size: 1.1rem; text-align: center; margin-bottom: 2rem; padding: 1rem; background: var(--highlight-yellow); border-radius: 8px; transform: var(--rotate-1);">
+                        🚧 Work in Progress - More questions being added! 🚧
+                    </div>
+                </div>
+                
+                <!-- Quiz Start Screen -->
+                <div id="quiz-start" class="quiz-start">
+                    <div class="quiz-intro">
+                        <h2 class="handwritten">Ready to prove you're a true Directioner?</h2>
+                        <p>Challenge yourself with questions about:</p>
+                        <ul class="quiz-topics">
+                            <li>♫ Song lyrics and albums</li>
+                            <li>★ Band members and facts</li>
+                            <li>📅 Timeline and history</li>
+                            <li>🎤 Solo careers</li>
+                            <li>🏆 Awards and achievements</li>
+                        </ul>
+                        <div class="difficulty-selector">
+                            <h3>Choose your level:</h3>
+                            <div class="difficulty-buttons">
+                                <button class="btn btn-difficulty" data-level="easy">
+                                    <span class="level-name">Casual Fan</span>
+                                    <span class="level-desc">Easy questions</span>
+                                </button>
+                                <button class="btn btn-difficulty" data-level="medium">
+                                    <span class="level-name">True Directioner</span>
+                                    <span class="level-desc">Medium difficulty</span>
+                                </button>
+                                <button class="btn btn-difficulty" data-level="hard">
+                                    <span class="level-name">Ultimate Stan</span>
+                                    <span class="level-desc">Expert level</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pin"></div>
+                    <div class="tape tape-horizontal tape-corner-tr"></div>
+                </div>
+
+                <!-- Quiz Game Screen -->
+                <div id="quiz-game" class="quiz-game hidden">
+                    <div class="quiz-header">
+                        <div class="quiz-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill" id="progress-fill"></div>
+                            </div>
+                            <div class="quiz-counter">
+                                <span id="current-question">1</span> / <span id="total-questions">20</span>
+                            </div>
+                        </div>
+                        <div class="quiz-score">
+                            Score: <span id="current-score">0</span>
+                        </div>
+                    </div>
+
+                    <div class="question-card">
+                        <div class="question-number handwritten">Question <span id="question-num">1</span></div>
+                        <h3 class="question-text" id="question-text">Loading question...</h3>
+                        
+                        <div class="answer-options" id="answer-options">
+                            <!-- Options will be dynamically generated -->
+                        </div>
+
+                        <div class="question-feedback hidden" id="question-feedback">
+                            <div class="feedback-content">
+                                <span class="feedback-icon" id="feedback-icon"></span>
+                                <p class="feedback-text" id="feedback-text"></p>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-next hidden" id="next-button">
+                            Next Question →
+                        </button>
+
+                        <div class="paperclip"></div>
+                    </div>
+                </div>
+
+                <!-- Quiz Results Screen -->
+                <div id="quiz-results" class="quiz-results hidden">
+                    <div class="results-card">
+                        <h2 class="results-title">Quiz Complete! 🎉</h2>
+                        
+                        <div class="score-display">
+                            <div class="final-score">
+                                <span id="final-score">0</span><span class="score-total"> / 20</span>
+                            </div>
+                            <div class="score-percentage" id="score-percentage">0%</div>
+                        </div>
+
+                        <div class="result-message" id="result-message">
+                            <!-- Dynamic message based on score -->
+                        </div>
+
+                        <div class="achievement-badge" id="achievement-badge">
+                            <!-- Achievement badge based on performance -->
+                        </div>
+
+                        <div class="result-breakdown" id="result-breakdown">
+                            <!-- Categories breakdown -->
+                        </div>
+
+                        <div class="result-actions">
+                            <button class="btn btn-primary" id="retry-button">
+                                Try Again
+                            </button>
+                            <button class="btn btn-secondary" id="home-button">
+                                Back to Scrapbook
+                            </button>
+                        </div>
+
+                        <div class="sticker sticker-green" style="position: absolute; top: -10px; right: 20px;">★</div>
+                    </div>
+                </div>
+
+                <!-- Scattered decorative elements -->
+                <div class="doodle doodle-heart" style="position: absolute; top: 10%; right: 15%;">♥</div>
+                <div class="doodle doodle-star" style="position: absolute; bottom: 20%; left: 10%;">★</div>
+                <div class="handwritten doodle" style="position: absolute; top: 30%; left: 5%; transform: rotate(-8deg); font-size: 0.9rem;">
+                    "How well do you know 1D?"
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JavaScript -->
+    <script src="js/quiz.js"></script>
+</body>
+</html>
