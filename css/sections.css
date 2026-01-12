@@ -11,6 +11,62 @@
     overflow: hidden;
 }
 
+/* Background Audio (hidden video) */
+.hero-video {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.hero-overlay {
+    display: none;
+}
+
+/* Audio Play Button */
+.audio-play-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--ink-red);
+    border: 3px solid var(--paper-white);
+    color: var(--paper-white);
+    font-size: 1.5rem;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.audio-play-btn:hover {
+    transform: scale(1.1);
+    background: var(--ink-blue);
+}
+
+.audio-play-btn.playing {
+    background: var(--sticker-green);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(34, 197, 94, 0.5);
+    }
+}
+
 /* Scattered background images */
 .hero::before {
     content: '';
@@ -19,10 +75,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/backgrounds/bg_3_1D_Take_Me_Home_Tour.jpg'),
-        url('../assets/backgrounds/bg_5_One_Direction_X_Factor_Live_Glasgow.jpg'),
-        url('../assets/backgrounds/bg_13_Niall_Horan_at_his_Flicker_World_Tour_show_in_New_York_at_Jones_Beach_Theater._September_12_2018.jpg');
+    background-image:
+        url('../assets/backgrounds/bg-tour.jpg'),
+        url('../assets/backgrounds/bg-xfactor-01.jpg'),
+        url('../assets/backgrounds/bg-niall-tour.jpg');
     background-size: 300px 300px, 250px 250px, 350px 350px;
     background-position: 15% 20%, 85% 15%, 10% 80%;
     background-repeat: no-repeat;
@@ -56,7 +112,7 @@
 .hero-content {
     text-align: center;
     position: relative;
-    z-index: 2;
+    z-index: 5;
 }
 
 .hero-title {
@@ -145,10 +201,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/backgrounds/bg_1_One_Direction_6927580208.jpg'),
-        url('../assets/backgrounds/bg_4_2015_-_One_Direction_On_The_Road_Again_Sheffield_One_Direction_22597185956.jpg'),
-        url('../assets/backgrounds/bg_6_One_Direction_X_Factor_Live_Glasgow_4.jpg');
+    background-image:
+        url('../assets/backgrounds/bg-concert-01.jpg'),
+        url('../assets/backgrounds/bg-sheffield.jpg'),
+        url('../assets/backgrounds/bg-xfactor-02.jpg');
     background-size: 280px 280px, 320px 320px, 300px 300px;
     background-position: 5% 30%, 95% 20%, 8% 85%;
     background-repeat: no-repeat;
@@ -206,10 +262,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/backgrounds/bg_2_One_Direction_6927580464.jpg'),
-        url('../assets/backgrounds/bg_9_Lp1.jpg'),
-        url('../assets/members/1_Zayn_Malik_2012.jpg');
+    background-image:
+        url('../assets/backgrounds/bg-concert-02.jpg'),
+        url('../assets/backgrounds/bg-lp1.jpg'),
+        url('../assets/members/zayn-malik.jpg');
     background-size: 340px 340px, 260px 260px, 290px 290px;
     background-position: 12% 15%, 88% 25%, 15% 75%;
     background-repeat: no-repeat;
@@ -235,28 +291,33 @@
 }
 
 /* Random positioning for scattered effect */
-.gallery-polaroid:nth-child(1) { 
-    transform: var(--rotate-1) translate(20px, -10px); 
+.gallery-polaroid:nth-child(1) {
+    transform: var(--rotate-1) translate(20px, -10px);
     z-index: 1;
 }
-.gallery-polaroid:nth-child(2) { 
-    transform: var(--rotate-3) translate(-15px, 25px); 
+
+.gallery-polaroid:nth-child(2) {
+    transform: var(--rotate-3) translate(-15px, 25px);
     z-index: 2;
 }
-.gallery-polaroid:nth-child(3) { 
-    transform: var(--rotate-2) translate(10px, -20px); 
+
+.gallery-polaroid:nth-child(3) {
+    transform: var(--rotate-2) translate(10px, -20px);
     z-index: 3;
 }
-.gallery-polaroid:nth-child(4) { 
-    transform: var(--rotate-4) translate(-25px, 15px); 
+
+.gallery-polaroid:nth-child(4) {
+    transform: var(--rotate-4) translate(-25px, 15px);
     z-index: 4;
 }
-.gallery-polaroid:nth-child(5) { 
-    transform: var(--rotate-5) translate(15px, 30px); 
+
+.gallery-polaroid:nth-child(5) {
+    transform: var(--rotate-5) translate(15px, 30px);
     z-index: 5;
 }
-.gallery-polaroid:nth-child(6) { 
-    transform: var(--rotate-1) translate(-10px, -15px); 
+
+.gallery-polaroid:nth-child(6) {
+    transform: var(--rotate-1) translate(-10px, -15px);
     z-index: 6;
 }
 
@@ -275,10 +336,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/gallery/3_One_Direction_7073660921.jpg'),
-        url('../assets/members/2_Zayn_Malik__Liam_Payne_of_One_Direction.JPG'),
-        url('../assets/gallery/2_Homenaje_a_Liam_Payne_en_Aguascalientes_3.jpg');
+    background-image:
+        url('../assets/gallery/concert-show.jpg'),
+        url('../assets/members/zayn-liam.jpg'),
+        url('../assets/gallery/memorial-tribute.jpg');
     background-size: 310px 310px, 280px 280px, 270px 270px;
     background-position: 85% 20%, 10% 60%, 90% 80%;
     background-repeat: no-repeat;
@@ -303,16 +364,14 @@
     top: 0;
     bottom: 0;
     width: 20px;
-    background: 
-        repeating-linear-gradient(
-            to bottom,
+    background:
+        repeating-linear-gradient(to bottom,
             var(--tape-beige) 0px,
             var(--tape-beige) 40px,
             transparent 40px,
-            transparent 60px
-        );
+            transparent 60px);
     border-radius: 10px;
-    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Spiral holes */
@@ -326,11 +385,25 @@
     border: 1px solid var(--pencil-gray);
 }
 
-.spiral-hole:nth-child(1) { top: 20px; }
-.spiral-hole:nth-child(2) { top: 80px; }
-.spiral-hole:nth-child(3) { top: 140px; }
-.spiral-hole:nth-child(4) { top: 200px; }
-.spiral-hole:nth-child(5) { top: 260px; }
+.spiral-hole:nth-child(1) {
+    top: 20px;
+}
+
+.spiral-hole:nth-child(2) {
+    top: 80px;
+}
+
+.spiral-hole:nth-child(3) {
+    top: 140px;
+}
+
+.spiral-hole:nth-child(4) {
+    top: 200px;
+}
+
+.spiral-hole:nth-child(5) {
+    top: 260px;
+}
 
 .timeline-entry {
     background: var(--paper-white);
@@ -379,7 +452,7 @@
 .memorial-entry {
     background: linear-gradient(135deg, var(--paper-white) 0%, var(--paper-cream) 100%);
     border-left: 3px solid var(--ink-red);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }
 
 .memorial-entry .timeline-event {
@@ -408,10 +481,10 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/members/3_Zayn_Malik_-_1.jpg'),
-        url('../assets/members/2_Niall_Horan_1_27137634098.jpg'),
-        url('../assets/gallery/1_Homenaje_a_Liam_Payne_en_Aguascalientes_5.jpg');
+    background-image:
+        url('../assets/members/zayn-malik-02.jpg'),
+        url('../assets/members/niall-horan.jpg'),
+        url('../assets/gallery/tribute-wall.jpg');
     background-size: 290px 290px, 320px 320px, 350px 350px;
     background-position: 8% 25%, 92% 35%, 12% 80%;
     background-repeat: no-repeat;
@@ -448,7 +521,7 @@
 
 .lyrics-page:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .song-title {
@@ -498,7 +571,7 @@
     left: 40px;
     right: 0;
     bottom: 0;
-    background-image: 
+    background-image:
         linear-gradient(to bottom, transparent 0px, transparent 39px, var(--pencil-gray) 39px, var(--pencil-gray) 40px, transparent 40px),
         linear-gradient(to right, var(--ink-red) 0px, var(--ink-red) 1px, transparent 1px);
     background-size: 100% 40px, 40px 100%;
@@ -522,9 +595,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/backgrounds/bg_3_1D_Take_Me_Home_Tour.jpg'),
-        url('../assets/backgrounds/bg_5_One_Direction_X_Factor_Live_Glasgow.jpg');
+    background-image:
+        url('../assets/backgrounds/bg-tour.jpg'),
+        url('../assets/backgrounds/bg-xfactor-01.jpg');
     background-size: 250px 250px, 200px 200px;
     background-position: 85% 20%, 10% 75%;
     background-repeat: no-repeat;
@@ -542,7 +615,8 @@
     z-index: 2;
 }
 
-.album-card, .singles-card {
+.album-card,
+.singles-card {
     background: var(--paper-white);
     padding: 25px;
     border-radius: 12px;
@@ -554,9 +628,10 @@
     min-height: 400px;
 }
 
-.album-card:hover, .singles-card:hover {
+.album-card:hover,
+.singles-card:hover {
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
 .album-header {
@@ -584,7 +659,8 @@
     margin-bottom: 1.5rem;
 }
 
-.tracklist ol, .tracklist ul {
+.tracklist ol,
+.tracklist ul {
     font-family: var(--font-handwritten);
     font-size: 0.85rem;
     line-height: 1.4;
@@ -614,11 +690,26 @@
 }
 
 /* Scattered positioning for album cards */
-.album-card.scattered-1, .singles-card.scattered-1 { transform: var(--rotate-1); }
-.album-card.scattered-2 { transform: var(--rotate-3); }
-.album-card.scattered-3 { transform: var(--rotate-2); }
-.album-card.scattered-4 { transform: var(--rotate-4); }
-.album-card.scattered-5 { transform: var(--rotate-5); }
+.album-card.scattered-1,
+.singles-card.scattered-1 {
+    transform: var(--rotate-1);
+}
+
+.album-card.scattered-2 {
+    transform: var(--rotate-3);
+}
+
+.album-card.scattered-3 {
+    transform: var(--rotate-2);
+}
+
+.album-card.scattered-4 {
+    transform: var(--rotate-4);
+}
+
+.album-card.scattered-5 {
+    transform: var(--rotate-5);
+}
 
 /* Special styling for singles card */
 .singles-card {
@@ -635,12 +726,29 @@
 }
 
 /* Scattered positioning for lyrics pages */
-.page-1 { transform: var(--rotate-1); }
-.page-2 { transform: var(--rotate-3); }
-.page-3 { transform: var(--rotate-2); }
-.page-4 { transform: var(--rotate-4); }
-.page-5 { transform: var(--rotate-5); }
-.page-6 { transform: var(--rotate-1); }
+.page-1 {
+    transform: var(--rotate-1);
+}
+
+.page-2 {
+    transform: var(--rotate-3);
+}
+
+.page-3 {
+    transform: var(--rotate-2);
+}
+
+.page-4 {
+    transform: var(--rotate-4);
+}
+
+.page-5 {
+    transform: var(--rotate-5);
+}
+
+.page-6 {
+    transform: var(--rotate-1);
+}
 
 /* Liam Payne Tribute Section */
 .tribute-section {
@@ -657,9 +765,9 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: 
-        url('../assets/members/2_Liam_Payne_in_April_2023.png'),
-        url('../assets/members/3_Liam_Payne_smilling.jpg');
+    background-image:
+        url('../assets/members/liam-payne-02.png'),
+        url('../assets/members/liam-payne-03.jpg');
     background-size: 200px 200px, 180px 180px;
     background-position: 85% 15%, 10% 80%;
     background-repeat: no-repeat;
@@ -762,10 +870,21 @@
     position: relative;
 }
 
-.ticket-scattered:nth-child(1) { transform: var(--rotate-2); }
-.ticket-scattered:nth-child(2) { transform: var(--rotate-4); }
-.ticket-scattered:nth-child(3) { transform: var(--rotate-1); }
-.ticket-scattered:nth-child(4) { transform: var(--rotate-5); }
+.ticket-scattered:nth-child(1) {
+    transform: var(--rotate-2);
+}
+
+.ticket-scattered:nth-child(2) {
+    transform: var(--rotate-4);
+}
+
+.ticket-scattered:nth-child(3) {
+    transform: var(--rotate-1);
+}
+
+.ticket-scattered:nth-child(4) {
+    transform: var(--rotate-5);
+}
 
 /* Footer - Notebook Bottom */
 .footer {
@@ -786,119 +905,121 @@
     .hero-title {
         font-size: 3rem;
     }
-    
+
     .hero-subtitle {
         font-size: 1.2rem;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .members-grid {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .polaroid-collage {
         flex-direction: column;
         min-height: auto;
     }
-    
+
     .gallery-polaroid {
         transform: none !important;
         position: static !important;
         margin: 1rem 0;
     }
-    
+
     .timeline-notebook::before {
         left: 20px;
         width: 15px;
     }
-    
+
     .timeline-entry {
         margin-left: 50px;
         padding: 1rem;
     }
-    
+
     .spiral-hole {
         left: 27px;
         width: 6px;
         height: 6px;
     }
-    
+
     .lyrics-pages {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 1rem;
     }
-    
+
     .lyrics-page {
         width: 100%;
         max-width: 300px;
         margin: 0 auto;
         transform: none !important;
     }
-    
+
     /* Tribute section mobile */
     .tribute-content {
         gap: 2rem;
     }
-    
+
     .memorial-card {
         flex-direction: column;
         text-align: center;
         padding: 2rem;
         max-width: 100%;
     }
-    
+
     .memorial-photo img {
         width: 120px;
         height: 120px;
     }
-    
+
     .memorial-name {
         font-size: 1.6rem;
     }
-    
+
     .memory-notes {
         flex-direction: column;
         align-items: center;
         gap: 1rem;
     }
-    
+
     .memorial-note {
         transform: none !important;
         width: 100%;
         max-width: 280px;
     }
-    
+
     /* Section titles mobile */
     .section-title-handwritten {
         font-size: 2.2rem;
     }
-    
+
     /* Discography mobile */
     .albums-collection {
         grid-template-columns: 1fr;
         gap: 2rem;
         padding: 1rem;
     }
-    
-    .album-card, .singles-card {
+
+    .album-card,
+    .singles-card {
         transform: none !important;
         margin: 0 auto;
         max-width: 350px;
         min-height: auto;
         padding: 20px;
     }
-    
+
     .album-title {
         font-size: 1.3rem;
     }
-    
-    .tracklist ol, .tracklist ul {
+
+    .tracklist ol,
+    .tracklist ul {
         font-size: 0.8rem;
         padding-left: 1rem;
     }
